@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+{% block title %}Quiz Results{% endblock %}
+{% block content %}
+    <h2>Quiz Results</h2>
+    <div class="score-summary">
+        <h3>Your Score: {{ score }} / {{ total_qs }}</h3>
+        <p>({{ "%.2f"|format((score/total_qs)*100 if total_qs > 0 else 0) }}%)</p>
+    </div>
+
+    <h3>Detailed Results:</h3>
+    <div class="results-list">
+        {% for result in results %}
+        <div class="result-item {% if result.is_correct %}correct{% else %}incorrect{% endif %}">
+            <h4>Question: {{ result.question }}</h4>
+            <p><strong>Correct Answer:</strong> {{ result.correct_answer }}</p>
+            <p><strong>Your Answer:</strong> {{ result.user_answer if result.user_answer else "No answer provided" }} 
+               {% if result.is_correct %}
+                   <span class="status-badge status-correct">Correct</span>
+               {% else %}
+                   <span class="status-badge status-incorrect">Incorrect</span>
+               {% endif %}
+            </p>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="actions">
+        <a href="{{ url_for('restart') }}" class="btn btn-secondary">Start New Quiz with Another PDF</a>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block title %}Quiz - Question {{ q_num }}{% endblock %}
+{% block content %}
+    <h2>Question {{ q_num }} of {{ total_qs }}</h2>
+    <div class="flashcard">
+        <p class="flashcard-question">{{ question }}</p>
+    </div>
+    <form method="POST" class="form-quiz">
+        <div class="form-group">
+            <label for="answer">Your Answer:</label>
+            <textarea name="answer" id="answer" rows="4" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Answer & Next</button>
+    </form>
+{% endblock %}

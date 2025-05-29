@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-T">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Flashcard Quiz App{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1><a href="{{ url_for('index') }}">PDF Flashcard Generator & Quiz</a></h1>
+    </header>
+    <main class="container">
+        {% include '_flash_messages.html' %}
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>© 2024 Flashcard App</p>
+    </footer>
+</body>
+</html>
